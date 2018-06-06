@@ -1,0 +1,257 @@
+<?
+function BalanceS(){
+ ?>     <table class="blue" border="1" style="background-color:#ffffff"; rules="NONE"
+        frame="BOX" width="980" align="center" 
+ cellpadding="5" cellspacing="0" style="font-family:Bell Gothic,Verdana,Arial";>
+ <tr> <td>
+  <strong><img border="0" src="logo.jpg" width="930" height="121"></td></tr></table> 
+               <table class="blue" border="1" style="background-color:#ffffff"
+        frame="BOX" width="980" align="center" 
+ cellpadding="5" cellspacing="0" style="font-family:Bell Gothic,Verdana,Arial">    
+                
+                <tr><td style="font-size: 20px" ><center>PACEMART JUICES & CANDIES</td></tr>
+                 <tr><td style="font-size: 20px" ><center>P.O BOX 71305-00622,NAIROBI TEL</center></td></tr></table>
+  
+  <div align="center"><h4 style="font-family:Bell Gothic,Verdana,Arial";>Balance Sheet Statement As Of Date  <?echo date("Y/m/d");?> </h4></div>
+
+<table class="blue" border="1" style="background-color:#ffffff"
+       rules="NONE" frame="BOX" width="980" align="center" 
+ cellpadding="5" cellspacing="0" style="font-family:Bell Gothic,Verdana,Arial"><?
+   $he=mysql_query("select  sum(credit)as credit,ledgers.account_id as account_id  from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='3'
+
+
+group by ledgers.account_id
+");
+
+while($row=mysql_fetch_array($he)){
+
+$incom+=$row['credit'];
+ }
+   $ce=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='7'
+
+
+group by ledgers.account_id
+
+");
+while($row=mysql_fetch_array($ce)){
+
+$cost+=$row['credit'];
+ }
+   $c=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id ='1'
+
+
+group by ledgers.account_id
+having credit>0
+");
+while($row=mysql_fetch_array($c)){
+
+$expenses+=$row['credit'];
+ }
+    $ce=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id ='14'
+
+
+group by ledgers.account_id
+having credit>0
+");
+while($row=mysql_fetch_array($c)){
+
+$equity+=$row['credit'];
+ }
+   $over=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='2'
+
+
+group by ledgers.account_id
+having credit>0
+
+");
+while($row=mysql_fetch_array($over)){
+
+$pexpenses+=$row['credit'];
+ }
+ $retained=$equity+(($incom-$cost)-$expenses);
+  echo '<tr><td><b></td> <td>2013</td> <td>2014</td></tr>';
+  echo '<tr><td><b>CAPITAL EMPLOYED</td> <td></td></tr>';
+ $h=mysql_query("select  sum(credit)-sum(debit) as credit,ledgers.account_id as account_id  from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='5'
+
+
+group by ledgers.account_id
+");
+
+while($row=mysql_fetch_array($h)){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(CreditP($row['account_id'],$end)).'</td></tr>';
+$income+=$row['credit'];
+ }
+ $fixed=mysql_query("select (datediff(NOW(),ledgers.date)/365)*(dep/100*SUM(debit)) as current from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+inner join accounts on accounts.id=ledgers.account_id
+where group_id='6'
+
+group by ledgers.account_id");
+while($row=mysql_fetch_array($fixed)){
+
+$dep+=$row['current'];
+ }
+
+ echo '<tr><td>RETAINED EARNINGS</td> <td><u><b>'.number_format($retained-$dep).'</td></tr>';
+
+
+  echo '<tr><td><b>TOTAL SHAREHOLDERS FUND</td> <td><u><b>'.number_format($income+$retained-$dep).'</td></tr>';
+ echo '<tr><td colspan="2"><b>LONG TERM LIABLITIES</td> </tr>';
+  $c=mysql_query("select  sum(credit)-sum(debit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='8'
+
+group by ledgers.account_id
+");
+while($row=mysql_fetch_array($c)){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(CreditP($row['account_id'],$end)).'</td></tr>';
+$coste+=$row['credit'];
+ }
+ echo '<tr><td><b></td> <td><u><b>'.number_format($coste).'</td></tr>';
+ echo '<tr><td><b></td> <td><b><u>'.number_format($income+$coste+$retained-$dep).'</td></tr>';
+  echo '<tr><td colspan="2"><b>REPRESENTED BY</td> </tr>';
+  echo '<tr><td colspan="2"><b>NON CURRENT ASSETS</td> </tr>';
+  $c=mysql_query("select *,SUM(debit)-(datediff(NOW(),ledgers.date)/365)*(dep/100*SUM(debit)) as credit from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+inner join accounts on accounts.id=ledgers.account_id
+
+
+where group_id='6'
+group by ledgers.account_id
+");
+while($row=mysql_fetch_array($c)){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(FixedAssetsP($row['account_id'],$end)).'</td></tr>';
+$fixedd+=$row['credit'];
+$fixeddp+=FixedAssetsP($row['account_id'],$end);
+ }
+ 
+  echo '<tr><td><b></td> <td><u><b>'.number_format($fixedd).'</td><td><u><b>'.number_format($fixeddp).'</td></tr>';
+    echo '<tr><td colspan="2"><b>CURRENT ASSETS</td> </tr>';
+  $c=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='4' 
+
+
+group by ledgers.account_id
+
+");
+while($row=mysql_fetch_array($c)){if($row['credit']!=0.00){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(DebitP($row['account_id'],$end)).'</td></tr>';}
+$current+=$row['credit'];
+ }
+   $c=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='10' 
+
+
+group by ledgers.account_id
+
+");
+while($row=mysql_fetch_array($c)){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(DebitP($row['account_id'],$end)).'</td></tr>';
+$currentt+=$row['credit'];
+ }
+ $current=$current+$currentt;//$pexpenses;
+echo '<tr><td colspan="2"><b>PRE-PAID EXPENSES</td> </tr>';
+ $c=mysql_query("select  sum(credit)-sum(debit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='1' 
+
+
+group by ledgers.account_id
+having credit>0
+
+");
+while($row=mysql_fetch_array($c)){
+if($row['credit']!=0.00){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td></tr>';}
+$currenttp+=$row['credit'];
+ }
+ echo '<tr><td colspan="2"><b>TRADE DEBTORS</td> </tr>';
+ $c=mysql_query("select  sum(debit)-sum(credit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='2' 
+and ledgers.account_id<>'11'
+
+
+group by ledgers.account_id
+having credit>0
+
+");
+while($row=mysql_fetch_array($c)){
+if($row['credit']!=0.00){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td></tr>';}
+$currenttpp+=$row['credit'];
+ }
+
+ $current=$current+$currenttp+$currenttpp;
+  echo '<tr><td><b></td> <td><u><b>'.number_format($current).'</td></tr>';
+  echo '<tr><td colspan="2"><b>CURRENT LIABILITIES</td> </tr>';
+  $c=mysql_query("select  sum(credit)-sum(debit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='2'
+group by ledgers.account_id
+
+
+");
+while($row=mysql_fetch_array($c)){
+if($row['credit']<0){
+$cu=$row['credit']*-1;
+}
+else{
+$cu=$row['credit'];
+}if($cu!=0.00){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($cu).'</td></tr>';}
+if($row['credit']<0){
+$ty=$row['credit']*-1;
+$currentl+=$ty;
+}else{
+$currentl+=$row['credit'];
+}
+ }
+    echo '<tr><td colspan="2"><b>STATUTORY DEDUCTIONS</td> </tr>';
+  $c=mysql_query("select  sum(credit)-sum(debit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='12'
+
+group by ledgers.account_id
+
+
+");
+while($row=mysql_fetch_array($c)){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(CreditP($row['account_id'],$end)).'</td></tr>';
+$currentll1+=$row['credit'];
+$currentll1p+=CreditP($row['account_id'],$end);
+ }
+   echo '<tr><td colspan="2"><b>UNPAID SALARIES</td> </tr>';
+  $c=mysql_query("select  sum(credit)-sum(debit)as credit,ledgers.account_id as account_id   from ledgers
+inner join group_accounts on group_accounts.account_id=ledgers.account_id
+where group_id='11'
+
+group by ledgers.account_id
+
+
+");
+while($row=mysql_fetch_array($c)){
+echo '<tr><td>'.Legers($row['account_id']).'</td> <td>'.number_format($row['credit']).'</td><td>'.number_format(CreditP($row['account_id'],$end)).'</td></tr>';
+$currentll+=$row['credit'];
+$currentllp+=CreditP($row['account_id'],$end);
+ }
+$currentl0=$currentl+$currentll+$currentll1;
+$currentl0p=$currentlp+$currentllp+$currentll1p;
+  echo '<tr><td><b></td> <td><u><b>'.number_format($currentl).'</td><td><u><b>'.number_format($currentlp).'</td></tr>';
+  echo '<tr><td><b> NET CURRENT ASSETS</td> <td><u><b>'.number_format($current-$currentl0).'</td></tr>';
+  echo '<tr><td></td> <td><u><b><u>'.number_format($fixedd+($current-$currentl0)+$currenttpp).'</td></tr></table><br>';
+ }

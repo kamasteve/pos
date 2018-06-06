@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>phatfusion : validate</title>
+<link rel="stylesheet" href="../_common/css/main.css" type="text/css" media="all">
+<link href="validate.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../_common/js/mootools.js"></script>
+<script type="text/javascript" src="../utils/date-en-GB.js"></script>
+<script type="text/javascript" src="validate.js"></script>
+</head>
+<body>
+
+	<div id="container">
+		<div id="example">
+			<div id="validationMessage"></div>
+		  <form id='myForm' action="server.asp" method="post">
+		  	<p><label for="name">Name:*</label><input id="name" name="name" title="Please enter your name" type="text"  class="required" /></p>
+			<p><label for="email">Email:*</label><input id="email" name="email" title="Please enter your email" type="text" class="required email" /></p>
+			<p><label for="phone">Phone:*</label><input id="phone" name="phone" title="Phone Number" type="text" class="required number" /></p>
+			<p><label for="fax">Fax:</label><input id="fax" name="fax" type="text" /></p>
+			<p><label for="address">Address:*</label><textarea id="address" name="address" title="Address" class="required"></textarea><p>
+			<p><label for="postcode">Postcode:*</label><input id="postcode" name="postcode" title="Postcode" type="text" class="required postcode" /></p>
+			<p><label for="country">Country:*</label><select id="country" name="country" title="Country" class="required">
+			<option value="">please select</option>
+			<option value="uk">uk</option>
+			</select></p>
+			<p><label for="dob">D.O.B:*</label><input id="dob" name="dob" title="Date of Birth" type="text" class="required date" /></p>
+			<p><label for="sex">Sex:*</label><input type="radio" title="Sex" name="sex" value="male" class="required" />Male
+			<input type="radio" name="sex" value="female" class="required" />Female</p>
+			<p><label for="disclaimer">Disclaimer:*</label><input type="checkbox" id="disclaimer" title="Disclaimer" value="agree" class="required" /></p>
+			
+			<input type="submit" value="Submit" id="submit" class="submit" />
+		  </form>
+
+		
+			<script type="text/javascript">
+				
+			window.addEvent('domready', function(){
+				var myFormValidation = new Validate('myForm',{
+					errorClass: 'red'
+				});
+			});
+			</script>
+		</div>
+More script and css style
+: <a href="http://www.htmldrive.net/" title="HTML DRIVE - Free DHMTL Scripts,Jquery plugins,Javascript,CSS,CSS3,Html5 Library">www.htmldrive.net </a>		</div>
+		
+</body>
+</html>
