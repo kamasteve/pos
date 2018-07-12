@@ -1,8 +1,8 @@
 <?php require_once 'functions.php';
-$type='ACCOUNTS';
-Permission($_SESSION['department'],$type);
-			$user=$_SESSION['user_name'];
+//$type='ACCOUNTS';
 //Permission($_SESSION['department'],$type);
+			//$user=$_SESSION['user_name'];
+Permission($_SESSION['department'],$type);
 
 ?>
 <!DOCTYPE html>

@@ -12,6 +12,6 @@ trigger_error ('Could not connect
  to MySQL: ' . mysqli_connect_error());
 }else{
 	
-	echo "Connection Succesful";
+	//echo "Connection Succesful";
 }
 ?>

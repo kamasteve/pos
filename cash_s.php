@@ -10,7 +10,7 @@ $csv_hdr="Cash Sales Report  For Dates Between $date1 And $date2 \n";
 	
 // Ok, we're done with the table heading, lets connect to the database
     $database="test";
-    mysql_connect("localhost","mulken","muwake");
+    @mysql_connect("localhost","mulken","muwake");
     mysql_select_db("point_of_sale");
     mysql_set_charset('utf8');
     mysql_query('SET NAMES UTF-8');

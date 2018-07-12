@@ -1,4 +1,4 @@
-<?
+<?php
 ini_set('display_errors', '0');
 ini_set('log_errors', 1);
 /*
@@ -1103,7 +1103,7 @@ $id = "javascript:Print('stylized')";
 				</tr></table>
 				            <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;">
 							 
-                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="30" style="font-size: 22px">QTY
+                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="20" style="font-size: 22px">QTY
 				</th><th align="right" width="200" style="font-size: 22px">AMOUNT</th></tr>
 				';
     $total = 0;
@@ -1873,7 +1873,7 @@ $id = "javascript:Print('stylized')";
 				</tr></table>
 				            <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;">
 							 
-                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="30" style="font-size: 22px">QTY
+                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="20" style="font-size: 22px">QTY
 				</th><th align="right" width="200" style="font-size: 22px">AMOUNT</th></tr>
 				';
     $total = 0;
@@ -1967,7 +1967,7 @@ $id = "javascript:Print('stylized')";
 				</tr></table>
 				            <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;">
 							 
-                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="30" style="font-size: 22px">QTY
+                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="20" style="font-size: 22px">QTY
 				</th><th align="right" width="200" style="font-size: 22px">AMOUNT</th></tr>
 				';
     $total = 0;
@@ -2056,7 +2056,7 @@ $id = "javascript:Print('stylized')";
 				</tr></table>
 				            <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;">
 							 
-                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="30" style="font-size: 22px">QTY
+                <tr><th width="420" style="font-size: 22px">ITEM</th><th width="20" style="font-size: 22px">QTY
 				</th><th align="right" width="200" style="font-size: 22px">AMOUNT</th></tr>
 				';
     $total = 0;
@@ -2136,36 +2136,36 @@ $id = "javascript:Print('stylized')";
                    
                 
             
-				   <tr><td  style="font-size: 30px"><h3><b><center>R M HOLDINGS LTD</b></h3></td></tr>
-                 <tr><td  style="font-size: 30px"colspan="2"><center>P.O BOX 19093-00500,NAIROBI TEL:0202000210, 0710928789</center></td></tr>
-				 <tr><td  style="font-size: 30px"colspan="2"><center>PIN: P051402067X</center></td></tr>
-					 <tr><td  style="font-size: 30px"colspan="2"><center>VAT NO:0461472Q</center></td></tr>			
-<tr><td  style="font-size: 30px" colspan="2"><center>RECEIPT NO:# '.$receipt.'</center></td></tr>									 
-				 <tr><td  style="font-size: 30px" colspan="2"><center>Till: ' . $tiller . '</center></td></tr> 		
-				<tr><td  style="font-size: 30px" colspan="2"><center>' . gmdate("d-m-y h:i:s G") .
+				   <tr><td  style="font-size: 20px"><h3><b><center>R M HOLDINGS LTD</b></h3></td></tr>
+                 <tr><td  style="font-size: 20px"colspan="2"><center>P.O BOX 19093-00500,NAIROBI TEL:0202000210, 0710928789</center></td></tr>
+				 <tr><td  style="font-size: 20px"colspan="2"><center>PIN: P051402067X</center></td></tr>
+					 <tr><td  style="font-size: 20px"colspan="2"><center>VAT NO:0461472Q</center></td></tr>			
+<tr><td  style="font-size: 20px" colspan="2"><center>RECEIPT NO:# '.$receipt.'</center></td></tr>									 
+				 <tr><td  style="font-size: 20px" colspan="2"><center>Till: ' . $tiller . '</center></td></tr> 		
+				<tr><td  style="font-size: 20px" colspan="2"><center>' . gmdate("d-m-y h:i:s G") .
 								'</center></td></tr>
 				 <tr><th>
 				<hr size="10" noshade>  </th>
 				</tr></table>
 				            <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;">
 							 
-                <tr><th width="420" style="font-size: 30px">ITEM</th><th width="30" style="font-size: 30px">QTY
-				</th><th align="right" width="200" style="font-size: 30px">AMOUNT</th></tr>
+                <tr><th width="420" style="font-size: 20px">ITEM</th><th width="30" style="font-size: 20px">QTY
+				</th><th align="right" width="200" style="font-size: 20px">AMOUNT</th></tr>
 				';
     $total = 0;
 	$vat=0;
       while ($row = mysqli_fetch_array($sql)) {
-        echo '<tr><td style="font-size: 30px">
-		' . (strtoupper($row['p_name'])) . '</td><td></td><td style="font-size: 30px" align="right">' . ($row['qty']) . ' X ' . number_format($row['price'],2) . '</td><tr></tr>
-		<tr><td style="font-size: 30px"></td>
-		<td style="font-size: 30px">
-		</td><td align="right" style="font-size: 30px">' . number_format($row['total_p'],2) . '</td></tr></tr>';
+        echo '<tr><td style="font-size: 20px">
+		' . (strtoupper($row['p_name'])) . '</td><td></td><td style="font-size: 20px" align="right">' . ($row['qty']) . ' X ' . number_format($row['price'],2) . '</td><tr></tr>
+		<tr><td style="font-size: 20px"></td>
+		<td style="font-size: 20px">
+		</td><td align="right" style="font-size: 20px">' . number_format($row['total_p'],2) . '</td></tr></tr>';
         $total+=($row['total_p']);
 		$vat+=$row['vat'];
 		$qty+=$row['qty'];
 		$time=$row['t'];
     }echo '</table><br><br>';
-	echo ' <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;font-size: 25px">
+	echo ' <table width="550" style="font-family:Bell Gothic ,Verdana,Arial;font-size: 18px">
    <tr><td>
 				<hr size="10"  noshade>  </td>
 				</tr></table>';
@@ -2173,17 +2173,17 @@ $id = "javascript:Print('stylized')";
  
 
 	
-	 <tr><th style="font-size: 30px"><u> QTY</th><th width="300" 
-	 style="font-size: 30px">&nbsp;&nbsp;&nbsp;&nbsp;<u>VATABLE AMT </th><th style="font-size: 30px"><u>
+	 <tr><th style="font-size: 20px"><u> QTY</th><th width="300" 
+	 style="font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;<u>VATABLE AMT </th><th style="font-size: 20px"><u>
 VAT </th></tr>
- 	 <tr><td style="font-size: 30px">&nbsp;&nbsp;'.$qty.'</td>
-	 <td style="font-size: 30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	 '.number_format(($total-$vat)) .'</td><td style="font-size: 30px">&nbsp;&nbsp;&nbsp;'.number_format($vat) .'</th></tr>
-   <tr><td></td><th style="font-size: 30px">TOTAL </th><td style="font-size: 30px"> ' . number_format($total, 2) . '</td></tr>
-   <tr><td></td><th style="font-size: 30px">DISCOUNT </th><td style="font-size: 30px"> ' . number_format($discount, 2) . '</td></tr>
-   <tr><td></td><th style="font-size: 30px">LESS DISCOUNT</th><td style="font-size: 30px"> ' . number_format($total-$discount, 2) . '</td></tr>
-   <tr><td></td><th style="font-size: 30px">CASH </th><td style="font-size: 30px"> ' . number_format($cash, 2) . '</td></tr>
-   <tr><td></td><th style="font-size: 30px">CHANGE </th><td style="font-size: 30px"> ' . number_format($change, 2) . '</td></tr>
+ 	 <tr><td style="font-size: 20px">&nbsp;&nbsp;'.$qty.'</td>
+	 <td style="font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 '.number_format(($total-$vat)) .'</td><td style="font-size: 20px">&nbsp;&nbsp;&nbsp;'.number_format($vat) .'</th></tr>
+   <tr><td></td><th style="font-size: 20px">TOTAL </th><td style="font-size: 20px"> ' . number_format($total, 2) . '</td></tr>
+   <tr><td></td><th style="font-size: 20px">DISCOUNT </th><td style="font-size: 20px"> ' . number_format($discount, 2) . '</td></tr>
+   <tr><td></td><th style="font-size: 20px">LESS DISCOUNT</th><td style="font-size: 20px"> ' . number_format($total-$discount, 2) . '</td></tr>
+   <tr><td></td><th style="font-size: 20px">CASH </th><td style="font-size: 20px"> ' . number_format($cash, 2) . '</td></tr>
+   <tr><td></td><th style="font-size: 20px">CHANGE </th><td style="font-size: 20px"> ' . number_format($change, 2) . '</td></tr>
    <tr><th>
 				<hr size="10"  noshade>  </th><th>
 				<hr size="10"  noshade>  </th><th>
@@ -2191,14 +2191,14 @@ VAT </th></tr>
 				</tr>
     </table>
 				 <table width="550" style="font-family:Bell Gothic,Verdana,Arial;">
-                <tr><td  style="font-size: 30px"><center>You were served by:' . ($user) . ' at '.$time.'</center></td></tr>
+                <tr><td  style="font-size: 20px"><center>You were served by:' . ($user) . ' at '.$time.'</center></td></tr>
 				
 				 <tr><th>
 				<hr size="10"  noshade>  </th><th>
 				
 				</tr>
 				 <tr><td><h4></h4></td></tr>
-				<tr><td style="font-size: 30px"> <div align="center"><b>GOODS ONCE SOLD CANNOT BE RE-ACCEPTED<td></div></tr>
+				<tr><td style="font-size: 20px"> <div align="center"><b>GOODS ONCE SOLD CANNOT BE RE-ACCEPTED<td></div></tr>
 				
 				
         </div></table>            
@@ -3104,9 +3104,6 @@ return $credit;
 }
 function FixedAssetsP($id,$date){
   $c=mysql_query("select SUM(debit)-(datediff(NOW(),ledgers.date)/365)*(dep/100*SUM(debit)) as credit from ledgers
-
-
-
 where account_id='$id'
 and date<='$date'
 group by ledgers.account_id
@@ -3116,3 +3113,4 @@ $credit=$row['credit'];
 return $credit;
 
 }
+?>

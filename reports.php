@@ -2627,9 +2627,9 @@ $totalq+=($row['qty']);
  }
   function SalesD($date1,$date2){
   if($date1!=''&&$date2!=''){
-$r=mysql_query("SELECT * from sales where date between '$date1' and '$date2'
- and type='RECEIPT'
-group by sale_id order by number
+$r=mysql_query("SELECT p_name,qty,price,total_p,number,p_price,time,user,SUM(price-p_price)*qty AS total_margin, SUM(price-p_price) AS margin FROM sales WHERE DATE BETWEEN '$date1' AND '$date2'
+ AND TYPE='RECEIPT' and price is not null
+GROUP BY sale_id ORDER BY number 
 ");
 }
 
@@ -2639,13 +2639,15 @@ group by sale_id order by number
   <table class="blue" border="1" style="background-color:#ffffff"
         frame="BOX" width="980" align="center" 
  cellpadding="5" cellspacing="0" style="font-family:Bell Gothic,Verdana,Arial">
-<tr><td><b>Product</b></td><td><b>Qty </b></td><td><b>Price</b></td><td><b>Total</b></td><td><b>Receipt</b></td><td><b>Time</b></td><td><b>User</b></td>
+<tr><td><b>Product</b></td><td><b>Qty </b></td><td><b>Price</b></td><td><b>Total</b></td><td><b>Profit</b></td><td><b>Receipt</b></td><td><b>Time</b></td><td><b>User</b></td>
  </tr><?
  while($row=mysql_fetch_array($r)){
+	 //$wishID = $row["invoice"]; 
+	 $final_margin=($row['qty']* $row['margin']);
  echo '<tr>
 
   <td>'.$row['p_name'].'</td>
- <td>'.($row['qty']).'</td><td>'.number_format($row['price']).'</td><td>'.number_format($row['total_p']).'</td> <td>'.($row['number']).'</td>
+ <td>'.($row['qty']).'</td><td>'.number_format($row['price']).'</td><td>'.number_format($row['total_p']).'</td><td>'.number_format($row['total_margin']).'</td> <td>'.($row['number']).'</td>
   <td>'.($row['time']).'</td>
    <td>'.($row['user']).'</td>
  
@@ -2653,6 +2655,7 @@ group by sale_id order by number
 </tr>';
 $totald+=($row['total_p']);
 $totalq+=($row['qty']);
+$totalp+=($row['total_margin']);
 
  }
  echo '<tr>
@@ -2661,6 +2664,7 @@ $totalq+=($row['qty']);
    <td><b>'.number_format($totalq).'</td>
     <td><b></td>
  <td><b>'.number_format($totald).'</td>
+ <td><b>'.number_format($totalp).'</td>
  </table>';
  
  }

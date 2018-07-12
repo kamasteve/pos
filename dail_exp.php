@@ -1,5 +1,5 @@
 <? require_once('functions.php');
-$type='BACK OFFICE';
+$type='SALES';
 
 Permission($_SESSION['department'],$type);?>
 <!DOCTYPE html>
@@ -205,11 +205,11 @@ if (x==null || x=="")
           
             <nav class="art-nav clearfix">
                 <?php
-$type='BACK OFFICE';
+$type='SALES';
 
 Permission($_SESSION['department'],$type);
 
-				headermenu($_SESSION['department'],'BACK OFFICE'); ?> 
+				headermenu($_SESSION['department'],'SALES'); ?> 
             </nav>
             <div class="art-sheet clearfix">
                 <div class="art-layout-wrapper clearfix">
@@ -223,25 +223,40 @@ Permission($_SESSION['department'],$type);
                                        
                                            <ul class="art-vmenu">
                                            
-											  <li>
+											<li>
                                                 <a href="" class="active">Quick Links</a>
                                                 <ul class="active">
                                                     <li>
-                                                        <a href="products_view.php">Add Products</a>
+                                                        <a href="tables.php">Sales</a>
                                                     </li>
+                                                   
                                                     <li>
-                                                        <a href="stock.php">Add Stock</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="categories.php">Add Categories</a>
+                                                        <a href="hold.php">Hold Transactions</a>
                                                     </li>
 													
-                                                
+                                                <li>
+                                                        <a href="unhold.php">Un-Hold Transactions</a>
+                                                    </li>
+													 <li>
+                                                        <a href="change_pass.php">Change Password</a>
+                                                    </li>
+													<?
+													if($_SESSION['department']=='4'){?>
+													 <li>
+                                                        <a href="module.php">Load Module</a>
+                                                    </li>
 													
+													<?}
+													?>
+													 <li>
+                                                        <a href="logout.php">Log Out</a>
+                                                    </li>
+												
                                                        
                                                     
                                                 </ul>
                                             </li>
+                                
                                 
                               
                                          
@@ -277,7 +292,7 @@ Permission($_SESSION['department'],$type);
 <div class="two"><label>Date</label>
 <input type="text" class="w8em format-y-m-d" required="required" name="date" id="ed" value=""  readonly /></div>
 <div class="two"><label>Description</label>
-<textarea name="mess" name="desc" rows="5" cols="5" required="required"></textarea></div>
+<textarea  name="desc" rows="5" cols="5" required="required"></textarea></div>
 <div class="two"><button type="submit" name="submit">SUBMIT</button>
 			<input type="hidden" name="submitted" value="TRUE"/></div></div></div></div>
 			</form>
@@ -287,7 +302,9 @@ Permission($_SESSION['department'],$type);
 				$am=mysqli_real_escape_string($dbc,trim($_POST['amont']));
 				$da=mysqli_real_escape_string($dbc,trim($_POST['desc']));
 				$de=mysqli_real_escape_string($dbc,trim($_POST['date']));
-				$q=mysqli_query($dbc,("insert into expenses(amount,description,date)values('$am','$da','$de')"));
+				$res= $_SESSION['user'];
+				//echo $res;
+				$q=mysqli_query($dbc,("insert into expenses(amount,description,date,added_by)values('$am','$da','$de','$res')"));
 				if($q){
 					echo'<p>Transaction successful</p>';
 				}else{

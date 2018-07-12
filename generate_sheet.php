@@ -52,6 +52,9 @@ values('$code','$session','$actual','$manual',NOW(),'$user')";
 
 	$sql=mysqli_query($dbc,$r);
 	++$i;
+	$r_update="UPDATE products set left_p='$manual' where product_id='$code'";
+$sql=mysqli_query($dbc,$r_update);
+	++$i;
 	 session_regenerate_id();
 	ob_end_clean();
 		 header("Location:physical.php?session=$session");		

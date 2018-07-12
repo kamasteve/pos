@@ -24,7 +24,7 @@ echo '<ul class="art-hmenu">
                       <a href="indexxx.php" ><img src="images/home_w.png" class="icons"/>Home</a>
                     </li>
 <li>
-                        <a href="#" class="active">CASHIER '.$_SESSION['user'].'  TILL &nbsp;&nbsp;&nbsp;'. teller(get_client_ip()).' </a>
+                        <a href="tables.php" class="active">CASHIER '.$_SESSION['user'].'  TILL &nbsp;&nbsp;&nbsp;'. teller(get_client_ip()).' </a>
                     </li>
 					
 
@@ -33,10 +33,15 @@ echo '<ul class="art-hmenu">
 						 <ul class="active">
 						   <li>
                         <a href="tables.php" >Retail Sales</a>
+						<a href="tables1.php" >Wholesale Sales</a>
+						<a href="product_catalogue.php" >Product Catalogue</a>
                     </li>
                            
 							
                         </ul>
+                    </li>
+					<li>
+                        <a href="dail_exp.php" >Petty Cash</a>
                     </li>
 					<li>
                         <a href="creditorss.php" > CRedit Sales</a>
@@ -129,7 +134,10 @@ if(($dep==3||$dep==4)&&$type=='BACK OFFICE'){
                         <a href="#">Master Files</a>
 						<ul class="active">
 								<li>
-                                <a href="products_view.php">Add Products</a>
+                                <a href="add_new_stock.php">Add Products</a>
+                            </li>
+							<li>
+                                <a href="products_view.php">Edit Products</a>
                             </li>
 									<li>
                                 <a href="categories.php">Add Categories</a>
@@ -153,9 +161,7 @@ if(($dep==3||$dep==4)&&$type=='BACK OFFICE'){
                                 <a href="stockk.php">Add Stock</a>
                             </li>
 
-							<li>
-                                <a href="dail_exp.php">Daily Expenses</a>
-                            </li>
+							
 				<li>
                                 <a href="supp.php">Supplier Expenses</a>
                             </li>
@@ -238,11 +244,18 @@ if(($dep==3||$dep==4)&&$type=='BACK OFFICE'){
 							  <li>
                                 <a href="get_sales.php">Product Cash Sales</a>
                             </li>
+							<li>
+                                <a href="expense_view.php">Daily Expense Report</a>
+                            </li>
 							 <li>
                                 <a href="get_invoices.php">Product Invoice Sales</a>
                             </li>
 								<li>
                                 <a href="get_salesr.php">Sales bASED ON RECEIPTS</a>
+                            </li>
+							 </li>
+								<li>
+                                <a href="expense_view.php">DAILY EXPENSE REPORT</a>
                             </li>
 							<li>
                                 <a href="cumulative.php">Cumulative Sales</a>

@@ -438,7 +438,7 @@ header("Location: $url");
 	}
 	//header("location: tables.php");
 	//redirect back to original page
-		header("location:tables.php");
+		header("location:tables1.php");
 }
 ?><head><title>SALES</title><style>
 input[type='text'] { font-size:18px; }
@@ -454,7 +454,7 @@ input[type='text'] { font-size:18px; }
 
 
 <html>
-<script language="JavaScript" type="text/javascript" src="productsearch.js"></script>
+<script language="JavaScript" type="text/javascript" src="productsearch1.js"></script>
 
 <script language="JavaScript" type="text/javascript" src="shortcuts.js"></script>
 
@@ -743,7 +743,7 @@ $('#inputform').on('keydown', 'input', function (event) {
                         document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET", "./search/gett.php?q=" + str, true);
+                xmlhttp.open("GET", "./search/gett1.php?q=" + str, true);
                 xmlhttp.send();
             }
            
@@ -767,7 +767,7 @@ $('#inputform').on('keydown', 'input', function (event) {
                         document.getElementById("txtHints").innerHTML = xmlhttp.responseText;
                     }
                 }
-                xmlhttp.open("GET", "./search/gett.php?q=" + str, true);
+                xmlhttp.open("GET", "./search/gett1.php?q=" + str, true);
                 xmlhttp.send();
             }
            
@@ -786,7 +786,7 @@ $('#inputform').on('keydown', 'input', function (event) {
 	</div>
      <body>    
    <fieldset style="border-color:#000000; border-width:1px; background-color:#e8e8e8;" >
-   <form  id="CODE" method="post" action="code.php">
+   <form  id="CODE" method="post" action="code1.php">
        <table align="center"  style="border-color:#000000;font-size:15px ;background-color:;" frame="BOX" border="0.1"  width="980px" 
  cellpadding="0"><tr><td>
 	
@@ -825,7 +825,7 @@ $('#inputform').on('keydown', 'input', function (event) {
     foreach ($_SESSION["products"] as $cart_itm)
     {
 	$totalp+=$cart_itm["price"]*$cart_itm["qty"];
-	echo '<form method="post" action="add_p.php">';
+	echo '<form method="post" action="add_pw.php">';
 	if($_SESSION['new']==($cart_itm["name"])){
 	$t='b';
 	
@@ -841,7 +841,7 @@ $('#inputform').on('keydown', 'input', function (event) {
 	 
       </td><td style="border-color:#000000;background-color:#bbbbbb;">
 	  <?echo number_format($cart_itm["price"]*$cart_itm["qty"]);?></td>
-	  <td style="border-color:#000000;background-color:#e8e8e8;" width="5"><?echo '<a href=tables.php?removep=' . $cart_itm["product_id"] .'>';?>
+	  <td style="border-color:#000000;background-color:#e8e8e8;" width="5"><?echo '<a href=tables1.php?removep=' . $cart_itm["product_id"] .'>';?>
 	<img src="x.png"/></a></td>
 <td width="1" style="border-color:#000000;background-color:#e8e8e8;"><input type="submit"name="type" value="Update" 
 	 />
@@ -854,7 +854,7 @@ $('#inputform').on('keydown', 'input', function (event) {
   	++$i;
   }}?>
 
-  <form name="cart" id='inputform'  method="POST" action="tables.php" style="border-color:#000000; border-width:2; font-size:17px;">
+  <form name="cart" id='inputform'  method="POST" action="tables1.php" style="border-color:#000000; border-width:2; font-size:17px;">
   <tr>
       <td colspan="3" align="right" style="border-color:#000000;background-color:#e8e8e8;">Grand Total</td>
       <td style="background-color:#e8e8e8;" width="130"><input type="text"  name="gTotal" value="<?echo $totalp;?>" style="border-color:#000000;background-color:#bbbbbb"; id="grand_total" readonly/></td>

@@ -1,0 +1,9 @@
+- Daily expenses report
+- locking prices
+- Fix erros on stock addition 
+- M-pesa paybill integration
+- Vat computation
+- Print receipts
+- Barcode scanner- when inputing prices
+- photos - for products 
+- Credit sale- show reports and credit sales
